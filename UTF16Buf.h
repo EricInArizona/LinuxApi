@@ -36,7 +36,7 @@ class UTF16Buf
 
   inline UTF16 valAt( const Int32 where ) const
     {
-    RangeC::test( where, 0, arraySize - 1,
+    RangeC::test2( where, 0, arraySize - 1,
                   "UTF16Buf.valAt() range." );
 
     // It might not be using append().
