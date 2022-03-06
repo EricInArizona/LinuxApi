@@ -13,14 +13,16 @@
 
 
 
+
 #include "BasicTypes.h"
 
 
-class Threads
+
+class SetStack
   {
   private:
 
   public:
-  static void sleep( Int32 milli );
-
+  static bool setit( void );
+  static Int32 getSize( void );
   };

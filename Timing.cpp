@@ -7,7 +7,7 @@
 
 #include "Timing.h"
 #include "CharBuf.h"
-#include <ctime>
+#include <time.h>
 
 
 Timing::Timing( void )
@@ -20,27 +20,28 @@ setNow();
 void Timing::setNow( void )
 {
 time_t rawtime;
+struct tm * timeinfo;
 
 time( &rawtime );
 timeSeconds = rawtime;
 
-struct tm buf;
-// errno_t errorNumber = localtime_s( &buf,
-localtime_s( &buf, &rawtime );
+timeinfo = localtime (&rawtime);
+
+
 
 // StIO::printFS( "Year:\n" );
 // StIO::printFUD( 1900 + buf.tm_year );
 // StIO::printFS( "\n" );
 
-seconds = buf.tm_sec;
-minutes = buf.tm_min;
-hour = buf.tm_hour;
-day = buf.tm_mday;
-month = buf.tm_mon;
-year = 1900 + buf.tm_year;
-weekDay = buf.tm_wday; // Sunday = 0
-yearDay = buf.tm_yday; // day of year to 365.
-dayLightSavings = buf.tm_isdst;
+seconds = timeinfo->tm_sec;
+minutes = timeinfo->tm_min;
+hour = timeinfo->tm_hour;
+day = timeinfo->tm_mday;
+month = timeinfo->tm_mon;
+year = 1900 + timeinfo->tm_year;
+weekDay = timeinfo->tm_wday; // Sunday = 0
+yearDay = timeinfo->tm_yday; // day of year to 365.
+dayLightSavings = timeinfo->tm_isdst;
 }
 
 
@@ -56,7 +57,6 @@ Str Timing::timeStr( void )
 {
 CharBuf cBuf;
 
-
 Str colon( ":" );
 Str secS( seconds );
 Str minS( minutes );
@@ -71,3 +71,5 @@ cBuf.appendStr( secS );
 
 return cBuf.getStr();
 }
+
+

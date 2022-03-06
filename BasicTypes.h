@@ -1,7 +1,7 @@
 // Written by Eric Chauvin 2022
 
 // This is licensed under the GNU General
-// Public License (GPL), version 2.  It is the
+// Public License (GPL).  It is the
 // same license that Linux has.
 
 
@@ -11,7 +11,7 @@
 
 // Basic type definitions.
 
-
+// Not using inttypes.h
 
 // See basicThingsAreRight().
 
