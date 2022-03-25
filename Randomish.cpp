@@ -1,8 +1,10 @@
 // Written by Eric Chauvin 2022
-// This is licensed under the GNU General
-// Public License (GPL), version 2.  It is the
-// same license that Linux has.
 
+
+// This is licensed under the GNU General
+// Public License (GPL).  It is the
+// same license that Linux has.
+// https://www.gnu.org/licenses/gpl-3.0.html
 
 
 
@@ -13,7 +15,7 @@
 
 
 void Randomish::makeRandomBytes(
-                            UTF16Buf& uBuf,
+                            Uint16Buf& uBuf,
                             const Int32 howMany )
 {
 uBuf.clear();
@@ -39,8 +41,8 @@ for( Int32 count = 0; count < 100000; count++ )
   // dist( gen())
 
   // Truncate the unsigned int to an 8 bit byte.
-  UTF16 c = Casting::
-                U64ToUTF16ByteTruncate( gen());
+  Uint16 c = Casting::
+                U64ToU16ByteTruncate( gen());
   if( c == 0 )
     continue;
 

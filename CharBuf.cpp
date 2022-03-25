@@ -23,11 +23,13 @@ cArray = new char[Casting::i32ToU64( arraySize )];
 
 
 
-CharBuf::CharBuf( const CharBuf &in )
+CharBuf::CharBuf( const CharBuf& in )
 {
+cArray = new char[Casting::i32ToU64( arraySize )];
+
 // Make the compiler think the in value is
 // being used.
-if( in.last == 123 )
+if( in.testForCopy == 123 )
   return;
 
 // Don't copy a giant buffer.

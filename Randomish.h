@@ -1,7 +1,10 @@
 // Written by Eric Chauvin 2022
+
+
 // This is licensed under the GNU General
-// Public License (GPL), version 2.  It is the
+// Public License (GPL).  It is the
 // same license that Linux has.
+// https://www.gnu.org/licenses/gpl-3.0.html
 
 
 
@@ -25,7 +28,7 @@
 
 
 #include "BasicTypes.h"
-#include "UTF16Buf.h"
+#include "Uint16Buf.h"
 
 
 class Randomish
@@ -33,7 +36,7 @@ class Randomish
   private:
 
   public:
-  static void makeRandomBytes( UTF16Buf& uBuf,
+  static void makeRandomBytes( Uint16Buf& uBuf,
                            const Int32 howMany );
 
   };

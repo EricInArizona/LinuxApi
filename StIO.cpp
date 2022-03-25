@@ -14,7 +14,6 @@
 // #include <wchar.h>
 
 
-// wchar_t Wide character type
 
 
 
@@ -69,8 +68,21 @@ t ptrdiff_t ptrdiff_t
 
 
 
-void StIO::cPuts( const char* toWrite )
+
+void StIO::printF( const char* toWrite )
 {
+// printf( "Testing.\n" );
+
+printf( "%s", toWrite );
+}
+
+
+
+
+void StIO::putS( const char* toWrite )
+{
+// This adds a newline character to the end of the string.
+
 // puts( "Testing.\n" );
 
 puts( toWrite );
@@ -80,25 +92,17 @@ puts( toWrite );
 
 
 
-/*
-void StIO::printFD( Int32 d )
+
+void StIO::printFD( const Int32 d )
 {
 printf( "%d", d );
 }
-*/
 
 
-/*
-void StIO::printFUD( Uint32 d )
+
+
+void StIO::putChar( const int c )
 {
-printf( "%u", d );
+// int putchar( int c );
+putchar( c );
 }
-*/
-
-
-/*
-void StIO::putC( Uint16 c )
-{
-putwchar( c );
-}
-*/

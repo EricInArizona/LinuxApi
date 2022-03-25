@@ -25,9 +25,10 @@ class StIO
   private:
 
   public:
-  static void cPuts( const char* toWrite );
-  // static void printFD( Int32 d );
-  // static void printFUD( Uint32 d );
-  // static void putC( Uint16 c );
+  static void printF( const char* toWrite );
+  // putS adds a newline to the end.
+  static void putS( const char* toWrite );
+  static void printFD( const Int32 d );
+  static void putChar( const int c );
 
   };

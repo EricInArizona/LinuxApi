@@ -22,6 +22,7 @@
 class CharBuf
   {
   private:
+  Int32 testForCopy = 123;
   char* cArray;
   Int32 arraySize = 0;
   Int32 last = 0;
@@ -31,6 +32,7 @@ class CharBuf
   CharBuf( void );
   CharBuf( const CharBuf &in );
   ~CharBuf( void );
+
   inline Int32 getLast( void ) const
     {
     return last;

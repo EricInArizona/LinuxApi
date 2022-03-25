@@ -26,58 +26,69 @@
 
 
 
+// static_cast is not being used.
+// Int32 result = static_cast<Int32>( x );
+
+
+
 class Casting
   {
   private:
 
   public:
 
-  inline static ArrayU64 i32ToU64( Int32 x )
+  inline static Uint64 i32ToU64( Int32 x )
     {
     if( x < 0 )
       throw "Casting negative x to U64.";
 
-    ArrayU64 result = x & 0x7FFFFFFF;
+    Uint64 result = x & 0x7FFFFFFF;
     return result;
     }
 
-  inline static ArrayU64 i64ToU64( Int64 x )
+  inline static Uint32 i32ToU32( Int32 x )
+    {
+    if( x < 0 )
+      throw "Casting negative x to U32.";
+
+    Uint32 result = x & 0x7FFFFFFF;
+    return result;
+    }
+
+  inline static Uint64 i64ToU64( Int64 x )
     {
     if( x < 0 )
       throw "Casting negative x to U64.";
 
-    ArrayU64 result = x & 0x7FFFFFFFFFFFFFFFL;
+    //                0x7FFF FFFF FFFF FFFF
+    Uint64 result = x & 0x7FFFFFFFFFFFFFFFLL;
     return result;
     }
 
-  inline static Int32 UTF16ToI32( UTF16 x )
+  inline static Int32 U16ToI32( Uint16 x )
     {
-    if( x > 0x7FFF )
-      throw "Casting from too big of UTF16.";
-
-    Int32 result = x & 0x7FFF;
+    Int32 result = x & 0xFFFF;
     return result;
     }
 
-  inline static Int32 U64ToI32( ArrayU64 x )
+  inline static Int32 U64ToI32( Uint64 x )
     {
     if( x > 0x7FFFFFFF )
-      throw "Casting from too big of an x.";
+      throw "U64ToI32: Casting from too big of an x.";
 
-    // Int32 result = static_cast<Int32>( x );
     Int32 result = x & 0x7FFFFFFF;
     return result;
     }
 
 
-  inline static UTF16 U64ToUTF16ByteTruncate(
-                                  ArrayU64 x )
+  inline static Uint16 U64ToU16ByteTruncate(
+                                  Uint64 x )
     {
     // Just truncate anything over 8 bits
     // and lose any higher bits without
     // checking them.
 
-    UTF16 result = x & 0xFF;
+    Uint16 result = x & 0xFF;
     return result;
     }
 

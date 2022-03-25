@@ -1,7 +1,10 @@
 // Written by Eric Chauvin 2022
+
+
 // This is licensed under the GNU General
-// Public License (GPL), version 2.  It is the
+// Public License (GPL).  It is the
 // same license that Linux has.
+// https://www.gnu.org/licenses/gpl-3.0.html
 
 
 
@@ -63,7 +66,8 @@ Int64 howMany = inFile.tellg();
 if( howMany < 0 )
   throw "FileIO.readAll() tellg() returned < 0.";
 
-if( howMany > 4000000000 )
+// Don't read files that are this big in to RAM.
+if( howMany > 4000000000LL )
   throw "Infile tellg() returned > 4000000000.";
 
 inFile.seekg( 0 );
@@ -77,6 +81,16 @@ cBuf.appendCharBuf( buffer, Casting::i64ToI32(
 
 delete[] buffer;
 inFile.close();
+}
+
+
+
+bool FileIO::exists( const char* fileName )
+{
+std::ifstream inFile( fileName,
+                      std::ifstream::binary );
+
+return inFile.good();
 }
 
 

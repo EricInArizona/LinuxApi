@@ -24,3 +24,21 @@ class Threads
   static void sleep( Int32 milli );
 
   };
+
+
+
+
+
+/*
+I don't think I will ever be using threads like this:
+
+
+#include <thread>  
+
+  std::thread first (foo); 
+  std::thread second (bar,0);
+
+
+*/
+
+

@@ -77,8 +77,11 @@ delete[] tempArray;
 
 void Int32Array::appendVal( const Int32 toSet )
 {
-if( (lastAppend + 2) <= arraySize )
+if( (lastAppend + 1) >= arraySize )
   increaseAppendSize( (1024 * 2) );
+
+RangeC::test2( lastAppend, 0, arraySize - 1,
+            "Int32Array.appendVal arraySize range." );
 
 iArray[lastAppend] = toSet;
 lastAppend++;

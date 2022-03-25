@@ -3,6 +3,7 @@
 // This is licensed under the GNU General
 // Public License (GPL).  It is the
 // same license that Linux has.
+// https://www.gnu.org/licenses/gpl-3.0.html
 
 
 
@@ -10,85 +11,95 @@
 
 
 // Basic type definitions.
-
-// Not using inttypes.h
+// This file is #included in just about every file I write.
 
 // See basicThingsAreRight().
 
 
+// I never use the C Preprocessor except for #include
+// statements.  I never include any standard header files
+// in my own header files, they are only in .cpp files,
+// where they will affect only that compilation unit.
+// That way I can #include my own header files without having
+// to worry about how they can corrupt other files with
+// macros and other garbage.
+// So I don't #include here any types that are defined in
+// standard header files like a types.h kind of file.
+
+// Also, in my BuildProj.sh file, I have it warn about
+// everything: -Weverything
+// So I can fix any problems, like type cast warnings.
+
+
 
 // typedef char Int8;
-// typedef unsigned char Uint8;
-// typedef unsigned char Char8;
-// typedef unsigned short Char16;
-// typedef short Int16;
-
-// This might be a UTF16 character or a
-// byte that is not meant to have a sign bit.
-typedef unsigned short UTF16;
-
+typedef unsigned char Uint8;
+typedef unsigned short Uint16;
 typedef int Int32;
-// typedef unsigned int Uint32;
+typedef unsigned int Uint32;
 typedef long long Int64; // A constant 123LL
                          // is Int64.
 
-typedef unsigned long long ArrayU64; // 123ULL
+typedef unsigned long long Uint64; // 123ULL
 
 typedef float Float32;
 typedef double Float64;
+typedef long double Float128;
 
 
 
-/*
-bool basicThingsAreRight()
+class BasicTypes
   {
-  printf( "Int8 size: %d\n", (int)sizeof( Int8 ) );
-  printf( "Char8 size: %d\n", (int)sizeof( Char8 ) );
-  printf( "Char16 size: %d\n", (int)sizeof( Char16 ) );
-  printf( "Int16 size: %d\n", (int)sizeof( Int16 ) );
-  printf( "Uint16 size: %d\n", (int)sizeof( Uint16 ) );
-  printf( "Int32 size: %d\n", (int)sizeof( Int32 ) );
-  printf( "Uint32 size: %d\n", (int)sizeof( Uint32 ) );
-  printf( "Int64 size: %d\n", (int)sizeof( Int64 ) );
-  printf( "Uint64 size: %d\n", (int)sizeof( Uint64 ) );
-  printf( "Float32 size: %d\n", (int)sizeof( Float32 ) );
-  printf( "Float64 size: %d\n", (int)sizeof( Float64 ) );
+  public:
 
-  // Float128
+  inline static void thingsAreRight( void )
+    {
+    // These are actually checked at compile time and
+    // you get a warning that the function could be
+    // declared with the attribute noreturn.
+    // So you don't actually have to call this function
+    // to see if things are not right.
 
-  if( sizeof( Int8 ) != 1 )
-    return false;
+    if( sizeof( Uint8 ) != 1 )
+      throw "Uint8 type is not the right size.";
 
-  if( sizeof( Char8 ) != 1 )
-    return false;
+    if( sizeof( Uint16 ) != 2 )
+      throw "Uint16 type is not the right size.";
 
-  if( sizeof( Char16 ) != 2 )
-    return false;
+    if( sizeof( Int32 ) != 4 )
+      throw "Int32 type is not the right size.";
 
-  if( sizeof( Int16 ) != 2 )
-    return false;
+    if( sizeof( Uint32 ) != 4 )
+      throw "Uint32 type is not the right size.";
 
-  if( sizeof( Uint16 ) != 2 )
-    return false;
+    if( sizeof( Int64 ) != 8 )
+      throw "Int64 type is not the right size.";
 
-  if( sizeof( Int32 ) != 4 )
-    return false;
+    if( sizeof( Uint64 ) != 8 )
+      throw "Uint64 type is not the right size.";
 
-  if( sizeof( Uint32 ) != 4 )
-    return false;
+    if( sizeof( Float32 ) != 4 )
+      throw "Float32 type is not the right size.";
 
-  if( sizeof( Int64 ) != 8 )
-    return false;
+    if( sizeof( Float64 ) != 8 )
+      throw "Float64 type is not the right size.";
 
-  if( sizeof( Uint64 ) != 8 )
-    return false;
+    // Compiler flags to force the size of this.
+    // But it defaults to 128 bits on this machine.
 
-  if( sizeof( Float32 ) != 4 )
-    return false;
+    // -mlong-double-128
+    // Force long double to be 128 bits
 
-  if( sizeof( Float64 ) != 8 )
-    return false;
+    // -mlong-double-64
+    // Force long double to be 64 bits
 
-  return true;
-  }
-*/
+    // -mlong-double-80
+    // Force long double to be 80 bits, padded to 128 bits
+    // for storage
+
+    if( sizeof( Float128 ) != 16 )
+      throw "Float128 type is not the right size.";
+
+    }
+
+  };
