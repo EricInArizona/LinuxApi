@@ -1,8 +1,4 @@
-// Written by Eric Chauvin 2022
-
-
-// Port 443 for https.
-// The client makes a request first.
+// Copyright Eric Chauvin 2022
 
 
 
@@ -17,6 +13,19 @@
 
 
 
+
+
+// This file has a lot of notes on the bottom from
+// my old C# stuff.
+// Things on my ToDo list.
+
+
+
+
+// Port 443 for https.
+// The client makes a request first.
+
+
 #include "../LinuxApi/BasicTypes.h"
 // #include "../LinuxApi/FileIO.h"
 
@@ -26,10 +35,9 @@ class SocketClient
   {
   private:
   Int32 testForCopy = 123;
-  // bool basicThingsAreRight();
   // FileIO mainIO;
   Int32 arraySize = 0;
-  char* cArray;
+  char* cArray;  // Uint8?
 
 
 
@@ -40,13 +48,6 @@ class SocketClient
   void doSomething( void );
 
 
-/*
-  inline static const char* getVersionStr( void )
-    {
-    return "3/5/2022";
-    }
-
-*/
 
   };
 

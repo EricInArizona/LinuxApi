@@ -1,3 +1,12 @@
+// Copyright Eric Chauvin 2022
+
+
+
+// This is licensed under the GNU General
+// Public License (GPL).  It is the
+// same license that Linux has.
+// https://www.gnu.org/licenses/gpl-3.0.html
+
 
 
 #include "../LinuxApi/SetStack.h"
@@ -7,29 +16,26 @@
 
 
 
-bool SetStack::setit( void )
+// This gets called in main.cpp before anything else
+// is done.
+
+bool SetStack::setit( const Uint64 setTo )
 {
-const rlim_t kStackSize = 64L * 1024L * 1024L;   // min stack size = 64 Mb
-
-
 // struct rlimit {
 //           rlim_t rlim_cur;  // Soft limit
-//           rlim_t rlim_max;  // Hard limit (ceiling for rlim_cur)
+//           rlim_t rlim_max;  // Hard limit
 //           };
-
-// On success, these system calls return 0.  On error, -1 is
-// returned, and errno is set to indicate the error.
 
 
 struct rlimit rl;
 
 Int32 result = getrlimit( RLIMIT_STACK, &rl );
-if( result != 0 )
+if( result != 0 ) // Error is -1.
   return false;
 
-if( rl.rlim_cur < kStackSize )
+if( rl.rlim_cur < setTo )
   {
-  rl.rlim_cur = kStackSize;
+  rl.rlim_cur = setTo;
   result = setrlimit( RLIMIT_STACK, &rl );
   if (result != 0)
     return false;
@@ -45,16 +51,6 @@ return true;
 
 Int32 SetStack::getSize( void )
 {
-
-// struct rlimit {
-//           rlim_t rlim_cur;  // Soft limit
-//           rlim_t rlim_max;  // Hard limit (ceiling for rlim_cur)
-//           };
-
-// On success, these system calls return 0.  On error, -1 is
-// returned, and errno is set to indicate the error.
-
-
 struct rlimit rl;
 
 Int32 result = getrlimit( RLIMIT_STACK, &rl );

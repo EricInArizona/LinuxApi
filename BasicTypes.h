@@ -1,4 +1,6 @@
-// Written by Eric Chauvin 2022
+// Copyright Eric Chauvin 2022
+
+
 
 // This is licensed under the GNU General
 // Public License (GPL).  It is the
@@ -37,10 +39,16 @@ typedef unsigned char Uint8;
 typedef unsigned short Uint16;
 typedef int Int32;
 typedef unsigned int Uint32;
-typedef long long Int64; // A constant 123LL
-                         // is Int64.
 
-typedef unsigned long long Uint64; // 123ULL
+// These are right with Clang on my 64 bit machine.
+typedef long Int64;
+typedef unsigned long Uint64;
+
+// 128 bit?
+// typedef long long Int64; // A constant 123LL
+//                         // is long long.
+
+// typedef unsigned long long Uint64; // 123ULL
 
 typedef float Float32;
 typedef double Float64;

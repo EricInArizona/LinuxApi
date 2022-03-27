@@ -1,4 +1,4 @@
-// Written by Eric Chauvin 2022
+// Copyright Eric Chauvin 2022
 
 
 
@@ -177,18 +177,6 @@ for( Int32 count = 0; count < arraySize; count++ )
 
 
 
-/*
-void Str::print()
-{
-if( arraySize == 0 )
-  return;
-
-for( Uint32 count = 0; count < arraySize; count++ )
-  StIO::putC( cArray[count] );
-
-}
-*/
-
 
 /*
 void Str::printLine()
@@ -250,3 +238,5 @@ for( Int32 count = 0; count < arraySize; count++ )
 
 delete[] tempBuf;
 }
+
+

@@ -1,4 +1,4 @@
-// Written by Eric Chauvin 2022
+// Copyright Eric Chauvin 2022
 
 
 // This is licensed under the GNU General
@@ -10,6 +10,8 @@
 
 #pragma once
 
+
+// For variable length strings and other string operations.
 
 
 #include "BasicTypes.h"

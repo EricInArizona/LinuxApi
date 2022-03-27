@@ -1,4 +1,4 @@
-// Written by Eric Chauvin 2022
+// Copyright Eric Chauvin 2022
 
 
 
@@ -23,6 +23,6 @@ class SetStack
   private:
 
   public:
-  static bool setit( void );
+  static bool setit( const Uint64 setTo );
   static Int32 getSize( void );
   };

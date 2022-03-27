@@ -1,4 +1,4 @@
-// Written by Eric Chauvin 2022
+// Copyright Eric Chauvin 2022
 
 
 
@@ -12,6 +12,11 @@
 #pragma once
 
 
+// I might never be using threads like this:
+// std::thread aThread( AFunctionInC );
+// But see the bottom of the Threads.cpp file for
+// notes on that.
+
 
 #include "BasicTypes.h"
 
@@ -24,21 +29,3 @@ class Threads
   static void sleep( Int32 milli );
 
   };
-
-
-
-
-
-/*
-I don't think I will ever be using threads like this:
-
-
-#include <thread>  
-
-  std::thread first (foo); 
-  std::thread second (bar,0);
-
-
-*/
-
-

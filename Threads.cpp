@@ -1,4 +1,4 @@
-// Written by Eric Chauvin 2022
+// Copyright Eric Chauvin 2022
 
 
 // This is licensed under the GNU General
@@ -23,3 +23,38 @@ std::this_thread::sleep_for(
 }
 
 
+
+/*
+
+// Pass 123 to the function written in C.
+// std::thread aThread( aCFunction, 123 );
+
+
+
+Put a C function in a cpp file.
+
+
+extern "C" {
+
+// Declare it extern, then define it.
+// extern volatile Int32 ForTest;
+// volatile Int32 ForTest;
+
+
+
+// Declare it, then define it.
+void aCFunction( Int32 something );
+
+
+void aCFunction( Int32 something )
+{
+// Do something in a thread.
+// forTest = someResult;
+
+}
+
+
+
+} // extern "C"
+
+*/
