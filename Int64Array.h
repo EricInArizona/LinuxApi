@@ -1,5 +1,4 @@
 // Copyright Eric Chauvin 2022
-// This copyright notice has to stay at the top.
 
 
 // This is licensed under the GNU General
@@ -16,22 +15,22 @@
 #include "RangeC.h"
 
 
-class Int32Array
+class Int64Array
   {
   private:
   Int32 testForCopy = 123;
   Int32 arraySize = 0;
   Int32 lastAppend = 0;
-  Int32* iArray;
+  Int64* iArray;
 
   void increaseAppendSize( const Int32 howMuch );
 
   public:
-  Int32Array( void );
-  Int32Array( const Int32Array& obj );
-  ~Int32Array( void );
+  Int64Array( void );
+  Int64Array( const Int64Array& obj );
+  ~Int64Array( void );
   void setSize( const Int32 howBig );
-  void appendVal( const Int32 toSet );
+  void appendVal( const Int64 toSet );
 
   inline Int32 getArraySize( void ) const
     {
@@ -49,28 +48,28 @@ class Int32Array
     lastAppend = 0;
     }
 
-  inline Int32 getVal( const Int32 where ) const
+  inline Int64 getVal( const Int32 where ) const
     {
     // This might not be using lastAppend.
     // It might not be using appendVal().
     // So don't test here for that range.
 
     RangeC::test2( where, 0, arraySize - 1,
-      "Int32Array.getVal arraySize range." );
+      "Int64Array.getVal arraySize range." );
 
     return iArray[where];
     }
 
   inline void setVal( const Int32 where,
-                      const Int32 toSet )
+                      const Int64 toSet )
     {
     RangeC::test2( where, 0, arraySize - 1,
-           "Int32Array.setVal where range." );
+           "Int64Array.setVal where range." );
 
     iArray[where] = toSet;
     }
 
 
-  void copy( const Int32Array& in );
+  void copy( const Int64Array& in );
 
   };
