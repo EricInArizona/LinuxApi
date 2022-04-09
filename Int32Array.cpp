@@ -60,7 +60,6 @@ iArray = new Int32[Casting::i32ToU64( arraySize )];
 void Int32Array::increaseAppendSize(
                         const Int32 howMuch )
 {
-arraySize = arraySize + howMuch;
 Int32* tempArray = new Int32[Casting::i32ToU64(
                                arraySize )];
 
@@ -70,6 +69,9 @@ for( Int32 count = 0; count < max; count++ )
   tempArray[count] = iArray[count];
 
 delete[] iArray;
+
+arraySize = arraySize + howMuch;
+
 iArray = new Int32[Casting::i32ToU64( arraySize )];
 
 for( Int32 count = 0; count < max; count++ )
@@ -83,7 +85,7 @@ delete[] tempArray;
 void Int32Array::appendVal( const Int32 toSet )
 {
 if( (lastAppend + 1) >= arraySize )
-  increaseAppendSize( (1024 * 32) );
+  increaseAppendSize( (1024 * 64) );
 
 RangeC::test2( lastAppend, 0, arraySize - 1,
             "Int32Array.appendVal arraySize range." );
