@@ -13,8 +13,8 @@
 
 
 
-#include "BasicTypes.h"
-#include "Str.h"
+#include "../CppBase/BasicTypes.h"
+#include "../CppBase/Str.h"
 
 
 

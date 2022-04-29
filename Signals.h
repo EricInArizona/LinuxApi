@@ -13,8 +13,8 @@
 
 
 
-#include "BasicTypes.h"
-#include "RangeC.h"
+#include "../CppBase/BasicTypes.h"
+#include "../CppBase/RangeC.h"
 
 
 class Signals

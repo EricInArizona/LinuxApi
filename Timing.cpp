@@ -1,6 +1,7 @@
 // Copyright Eric Chauvin 2022
 
 
+
 // This is licensed under the GNU General
 // Public License (GPL).  It is the
 // same license that Linux has.
@@ -9,7 +10,7 @@
 
 
 #include "Timing.h"
-#include "CharBuf.h"
+#include "../CppBase/CharBuf.h"
 #include <time.h>
 
 
@@ -20,6 +21,9 @@ setNow();
 
 
 
+
+/*
+For Windows.
 void Timing::setNow( void )
 {
 struct tm newtime;
@@ -49,11 +53,11 @@ dayLightSavings = newtime.tm_isdst;
 
 //     if( newtime.tm_hour > 12 )
 }
+*/
 
 
 
-/*
-For Linux.
+// For Linux.
 void Timing::setNow( void )
 {
 time_t rawtime;
@@ -63,11 +67,7 @@ time( &rawtime );
 timeSeconds = rawtime;
 
 // For Linux.
-timeinfo = localtime (&rawtime);
-
-localtime_s( timeinfo, &rawtime );
-
-
+timeinfo = localtime( &rawtime );
 
 
 // StIO::printFS( "Year:\n" );
@@ -84,7 +84,6 @@ weekDay = timeinfo->tm_wday; // Sunday = 0
 yearDay = timeinfo->tm_yday; // day of year to 365.
 dayLightSavings = timeinfo->tm_isdst;
 }
-*/
 
 
 
