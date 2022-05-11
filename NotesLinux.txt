@@ -1,0 +1,33 @@
+How to install a minimal X11 on Ubuntu Server:
+sudo apt-get install xorg
+sudo apt-get install libx11-dev
+
+List fonts:
+fc-list | sort
+
+
+sudo apt update
+
+apt update
+apt upgrade // upgrade all packages.
+
+
+
+To install Ubuntu on Windows:
+Run command prompt as administrator.
+wsl --install
+
+
+Windows Subsystem for Linux
+
+
+Intall X11 fonts like this, with dash and three
+dots just like it shows:
+sudo apt-get install xfonts-...
+
+
+This has javac too.
+jdk 18 is the latest.
+apt install openjdk-11-jdk
+
+apt-get install libgl1-mesa-glx
